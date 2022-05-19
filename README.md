@@ -21,4 +21,15 @@ goto heroku.com --> select an app newly created --> go to deploy --> copy comman
 	$ git commit -am "make it better"
 	$ git push heroku master
 
+>> Create new repository on GitHub.com
+   # Note: https://github.com/sgeheroku/nodejsExpressCourse.git
+
+>> Note local branch by running command
+   $ git branch --list
+   * master
+   
+.... push an existing repository from the command line
+git remote add githubRepository https://github.com/sgeheroku/nodejsExpressCourse.git
+git push -u githubRepository master
+
 ```
