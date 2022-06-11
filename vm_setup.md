@@ -1,0 +1,5 @@
+install:
+git
+vscode
+nodejs
+
