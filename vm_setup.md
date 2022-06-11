@@ -1,5 +1,7 @@
+```
 install:
 git
 vscode
 nodejs
+```
 
