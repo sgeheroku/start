@@ -1,0 +1,129 @@
+https://devcenter.heroku.com/articles/node-redis-workers
+	
+	
+C:\projects\nodejs\node-worker-example>heroku create
+										Creating app... done, ⬢ stark-citadel-26288
+										https://stark-citadel-26288.herokuapp.com/ | https://git.heroku.com/stark-citadel-26288.git
+
+C:\projects\nodejs\node-worker-example>heroku addons:create heroku-redis
+										Creating heroku-redis on ⬢ stark-citadel-26288... !
+										 !    Please verify your account to install this add-on plan (please enter a credit card) For more information, see
+										 !    https://devcenter.heroku.com/categories/billing Verify now at https://heroku.com/verify
+
+C:\projects\nodejs\node-worker-example>heroku addons:create heroku-redis
+										Creating heroku-redis on ⬢ stark-citadel-26288... free
+										Your add-on should be available in a few minutes.
+
+										! WARNING: Data stored in hobby plans on Heroku Redis are not persisted.
+										redis-reticulated-17182 is being created in the background. The app will restart when complete...
+										Use heroku addons:info redis-reticulated-17182 to check creation progress
+										Use heroku addons:docs heroku-redis to view documentation	
+										
+
+C:\projects\nodejs\node-worker-example>heroku addons:info redis-reticulated-17182
+										=== redis-reticulated-17182
+										Attachments:  stark-citadel-26288::REDIS
+										Installed at: Thu Jun 23 2022 20:26:37 GMT+0000 (Greenwich Mean Time)
+										Owning app:   stark-citadel-26288
+										Plan:         heroku-redis:hobby-dev
+										Price:        free
+										State:        creating										
+										
+
+C:\projects\nodejs\node-worker-example>heroku addons:info redis-reticulated-17182
+										=== redis-reticulated-17182
+										Attachments:  stark-citadel-26288::REDIS
+										Installed at: Thu Jun 23 2022 20:26:37 GMT+0000 (Greenwich Mean Time)
+										Owning app:   stark-citadel-26288
+										Plan:         heroku-redis:hobby-dev
+										Price:        free
+										State:        created
+
+C:\projects\nodejs\node-worker-example>git push heroku main
+										Enumerating objects: 78, done.
+										Counting objects: 100% (78/78), done.
+										Delta compression using up to 4 threads
+										Compressing objects: 100% (32/32), done.
+										Writing objects: 100% (78/78), 25.67 KiB | 25.67 MiB/s, done.
+										Total 78 (delta 42), reused 78 (delta 42), pack-reused 0
+										remote: Compressing source files... done.
+										remote: Building source:
+										remote:
+										remote: -----> Building on the Heroku-20 stack
+										remote: -----> Determining which buildpack to use for this app
+										remote: -----> Node.js app detected
+										remote:
+										remote: -----> Creating runtime environment
+										remote:
+										remote:        NPM_CONFIG_LOGLEVEL=error
+										remote:        NODE_VERBOSE=false
+										remote:        NODE_ENV=production
+										remote:        NODE_MODULES_CACHE=true
+										remote:
+										remote: -----> Installing binaries
+										remote:        engines.node (package.json):  unspecified
+										remote:        engines.npm (package.json):   unspecified (use default)
+										remote:
+										remote:        Resolving node version 16.x...
+										remote:        Downloading and installing node 16.15.1...
+										remote:        Using default npm version: 8.11.0
+										remote:
+										remote: -----> Installing dependencies
+										remote:        Installing node modules
+										remote:
+										remote:        added 105 packages, and audited 106 packages in 5s
+										remote:
+										remote:        5 vulnerabilities (4 high, 1 critical)
+										remote:
+										remote:        To address all issues, run:
+										remote:          npm audit fix
+										remote:
+										remote:        Run `npm audit` for details.
+										remote:
+										remote: -----> Build
+										remote:
+										remote: -----> Caching build
+										remote:        - npm cache
+										remote:
+										remote: -----> Pruning devDependencies
+										remote:
+										remote:        up to date, audited 106 packages in 2s
+										remote:
+										remote:        5 vulnerabilities (4 high, 1 critical)
+										remote:
+										remote:        To address all issues, run:
+										remote:          npm audit fix
+										remote:
+										remote:        Run `npm audit` for details.
+										remote:
+										remote: -----> Build succeeded!
+										remote: -----> Discovering process types
+										remote:        Procfile declares types -> web, worker
+										remote:
+										remote: -----> Compressing...
+										remote:        Done: 33.8M
+										remote: -----> Launching...
+										remote:        Released v4
+										remote:        https://stark-citadel-26288.herokuapp.com/ deployed to Heroku
+										remote:
+										remote: This app is using the Heroku-20 stack, however a newer stack is available.
+										remote: To upgrade to Heroku-22, see:
+										remote: https://devcenter.heroku.com/articles/upgrading-to-the-latest-stack
+										remote:
+										remote: Verifying deploy... done.
+										To https://git.heroku.com/stark-citadel-26288.git
+										 * [new branch]      main -> main
+										 
+C:\projects\nodejs\node-worker-example>heroku ps:scale worker=1
+										Scaling dynos... done, now running worker at 1:Free
+										 
+C:\projects\nodejs\node-worker-example>heroku open
+
+https://stark-citadel-26288.herokuapp.com/
+
+
+
+stop app:
+heroku ps:scale web=0 worker=0
+
+https://github.com/OptimalBits/bull/blob/HEAD/REFERENCE.md#events
